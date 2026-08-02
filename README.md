@@ -13,6 +13,14 @@ combining two sources of guidance:
 
 ## Method
 
+![STRMSR architecture](assets/architecture.png)
+
+**(a)** Overall architecture: three encoders (target LR, reference LR, reference HR)
+feed CFCM for matching/warping and PDFA for patch-wise view selection, then
+FAM + DPRB reconstruct the SR output coarse-to-fine. **(b)** The PDFA block.
+**(c)** Memory banks: past LR frames supply the reference stream and past
+reconstructions supply the HR stream.
+
 The network runs three encoders: the target LR view, the LR reference and the
 HR reference, each producing a 3-level feature pyramid built from Swin
 Transformer groups (LR-STG / HR-STG).
