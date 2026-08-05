@@ -24,8 +24,7 @@ undersampled low-resolution (LR) view by combining two sources of guidance:
 
 - **Reference views** — high-resolution slices from another orientation of the same
   heart, which contain the anatomy that the low-resolution view lost.
-- **Memory** — previously reconstructed frames, so information is carried along the
-  cardiac cycle instead of each frame being restored on its own.
+- **Memory** — previously reconstructed frames, and the previous InputLR frames.
 
 Each frame is reconstructed in four stages:
 
@@ -41,7 +40,7 @@ Training uses an L1 image loss plus a k-space consistency term.
 - Guidance from a **different acquisition orientation** of the same heart, not the LR view alone.
 - **CFCM** aligns reference anatomy before fusion, so misregistration does not blur the output.
 - **PDFA** selects among multiple reference views independently for each patch.
-- **Temporal memory** propagates information along the cardiac cycle.
+- **Temporal memory** propagates information from previous frames
 - **k-space consistency** keeps the reconstruction faithful to the measurements.
 
 ## Method
